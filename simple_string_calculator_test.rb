@@ -64,4 +64,44 @@ class SimpleStringCalculatorTest < Minitest::Test
     input_string = "//_\n10_3_23"
     assert_equal 36, calculator.add(numbers: input_string)
   end
+
+  def test_negative_number_should_raise_exception
+    calculator = SimpleStringCalculator.new
+    input_string = '5, -15, 30'
+    error = assert_raises RuntimeError do
+      calculator.add(numbers: input_string)
+    end
+
+    assert_equal 'negatives not allowed: -15', error.message
+  end
+
+  def test_negative_numbers_should_raise_exception_and_return_negative_numbers
+    calculator = SimpleStringCalculator.new
+    input_string = '-5, -15, 30'
+    error = assert_raises RuntimeError do
+      calculator.add(numbers: input_string)
+    end
+
+    assert_equal 'negatives not allowed: -5, -15', error.message
+  end
+
+  def test_negative_numbers_with_two_delimeters
+    calculator = SimpleStringCalculator.new
+    input_string = '5\n15,30\n-50, -100, 200'
+    error = assert_raises RuntimeError do
+      calculator.add(numbers: input_string)
+    end
+
+    assert_equal 'negatives not allowed: -50, -100', error.message
+  end
+
+  def test_negative_numbers_with_custom_delimeter
+    calculator = SimpleStringCalculator.new
+    input_string = "//;\n-5;30;-15"
+    error = assert_raises RuntimeError do
+      calculator.add(numbers: input_string)
+    end
+
+    assert_equal 'negatives not allowed: -5, -15', error.message
+  end
 end
