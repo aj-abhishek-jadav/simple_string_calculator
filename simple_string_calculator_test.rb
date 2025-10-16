@@ -34,4 +34,16 @@ class SimpleStringCalculatorTest < Minitest::Test
     input_string = '5, 15, nil, 30'
     assert_equal 50, calculator.add(numbers: input_string)
   end
+
+  def test_input_string_containing_different_delimeter
+    calculator = SimpleStringCalculator.new
+    input_string = '5\n15 \n 30\n50'
+    assert_equal 100, calculator.add(numbers: input_string)
+  end
+
+  def test_input_string_containing_two_delimeters
+    calculator = SimpleStringCalculator.new
+    input_string = '5\n15,30\n50, 100'
+    assert_equal 200, calculator.add(numbers: input_string)
+  end
 end
