@@ -46,4 +46,22 @@ class SimpleStringCalculatorTest < Minitest::Test
     input_string = '5\n15,30\n50, 100'
     assert_equal 200, calculator.add(numbers: input_string)
   end
+
+  def test_custom_delimeter_semicolon_to_return_sum
+    calculator = SimpleStringCalculator.new
+    input_string = "//;\n1;2"
+    assert_equal 3, calculator.add(numbers: input_string)
+  end
+
+  def test_custom_delimete_colon_to_return_sum
+    calculator = SimpleStringCalculator.new
+    input_string = "//:\n50:3"
+    assert_equal 53, calculator.add(numbers: input_string)
+  end
+
+  def test_custom_delimeter_underscore_to_return_sum
+    calculator = SimpleStringCalculator.new
+    input_string = "//_\n10_3_23"
+    assert_equal 36, calculator.add(numbers: input_string)
+  end
 end
