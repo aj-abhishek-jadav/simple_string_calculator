@@ -59,7 +59,7 @@ class SimpleStringCalculatorTest < Minitest::Test
     assert_equal 53, calculator.add(numbers: input_string)
   end
 
-  def test_custom_delimeter_double_colon_to_return_sum
+  def test_custom_delimeter_underscore_to_return_sum
     calculator = SimpleStringCalculator.new
     input_string = "//_\n10_3_23"
     assert_equal 36, calculator.add(numbers: input_string)
