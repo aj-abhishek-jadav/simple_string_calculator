@@ -17,9 +17,21 @@ class SimpleStringCalculatorTest < Minitest::Test
     assert_equal 0, calculator.add
   end
 
-  def test_single_number_should_return_same
+  def test_single_number_should_return_itself
     calculator = SimpleStringCalculator.new
     input_string = '5'
     assert_equal 5, calculator.add(numbers: input_string)
+  end
+
+  def test_multiple_numbers_separated_by_comma_should_add_and_return
+    calculator = SimpleStringCalculator.new
+    input_string = '5, 15, 30'
+    assert_equal 50, calculator.add(numbers: input_string)
+  end
+
+  def test_input_string_containing_nil_should_add_and_return
+    calculator = SimpleStringCalculator.new
+    input_string = '5, 15, nil, 30'
+    assert_equal 50, calculator.add(numbers: input_string)
   end
 end
