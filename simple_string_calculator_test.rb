@@ -16,4 +16,10 @@ class SimpleStringCalculatorTest < Minitest::Test
     calculator = SimpleStringCalculator.new
     assert_equal 0, calculator.add
   end
+
+  def test_single_number_should_return_same
+    calculator = SimpleStringCalculator.new
+    input_string = '5'
+    assert_equal 5, calculator.add(numbers: input_string)
+  end
 end
