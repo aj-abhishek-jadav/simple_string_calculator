@@ -19,31 +19,31 @@ class SimpleStringCalculatorTest < Minitest::Test
 
   def test_single_number_should_return_itself
     calculator = SimpleStringCalculator.new
-    input_string = '5'
+    input_string = "5"
     assert_equal 5, calculator.add(numbers: input_string)
   end
 
   def test_multiple_numbers_separated_by_comma_should_add_and_return
     calculator = SimpleStringCalculator.new
-    input_string = '5, 15, 30'
+    input_string = "5, 15, 30"
     assert_equal 50, calculator.add(numbers: input_string)
   end
 
   def test_input_string_containing_nil_should_add_and_return
     calculator = SimpleStringCalculator.new
-    input_string = '5, 15, nil, 30'
+    input_string = "5, 15, nil, 30"
     assert_equal 50, calculator.add(numbers: input_string)
   end
 
   def test_input_string_containing_different_delimeter
     calculator = SimpleStringCalculator.new
-    input_string = '5\n15 \n 30\n50'
+    input_string = "5\n15 \n 30\n50"
     assert_equal 100, calculator.add(numbers: input_string)
   end
 
   def test_input_string_containing_two_delimeters
     calculator = SimpleStringCalculator.new
-    input_string = '5\n15,30\n50, 100'
+    input_string = "5\n15,30\n50, 100"
     assert_equal 200, calculator.add(numbers: input_string)
   end
 
@@ -67,7 +67,7 @@ class SimpleStringCalculatorTest < Minitest::Test
 
   def test_negative_number_should_raise_exception
     calculator = SimpleStringCalculator.new
-    input_string = '5, -15, 30'
+    input_string = "5, -15, 30"
     error = assert_raises RuntimeError do
       calculator.add(numbers: input_string)
     end
@@ -77,7 +77,7 @@ class SimpleStringCalculatorTest < Minitest::Test
 
   def test_negative_numbers_should_raise_exception_and_return_negative_numbers
     calculator = SimpleStringCalculator.new
-    input_string = '-5, -15, 30'
+    input_string = "-5, -15, 30"
     error = assert_raises RuntimeError do
       calculator.add(numbers: input_string)
     end
@@ -87,7 +87,7 @@ class SimpleStringCalculatorTest < Minitest::Test
 
   def test_negative_numbers_with_two_delimeters
     calculator = SimpleStringCalculator.new
-    input_string = '5\n15,30\n-50, -100, 200'
+    input_string = "5\n15,30\n-50, -100, 200"
     error = assert_raises RuntimeError do
       calculator.add(numbers: input_string)
     end
